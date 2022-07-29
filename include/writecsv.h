@@ -5,5 +5,5 @@
 #include <string> //filename, args  
 #include <chrono> 
 
-void writeToCSV(std::string file_path, std::string filename, std::string_view datatype, std::size_t size, std::size_t bytes, std::chrono::duration<double,std::milli> init); 
+void writeToCSV(std::string file_path, std::string filename, std::string_view value_type, std::string_view index_type, std::size_t size, std::size_t bytes, std::chrono::duration<double,std::milli> init, std::string_view am);   
 

@@ -1,7 +1,7 @@
 #pragma once
-//#include <iostream> 
+#include <iostream> 
 #include <string_view> // type_name() 
 #include <chrono> 
 
 // terminal output
-void writeToTerminal(std::string_view declaration, std::string_view datatype, std::size_t bytes, std::size_t elements, std::chrono::duration<double, std::milli> init);
+void writeToTerminal(std::string_view declaration, std::string_view value_type, std::string_view index_type, std::size_t bytes, std::size_t elements, std::chrono::duration<double, std::milli> init, std::string_view am);

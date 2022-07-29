@@ -1,23 +1,23 @@
 // program description: Time the initialization of a raw, 1MB stack-allocated integer array using a computation i*3  
-#include <iostream>      // well, I/O of course  
+#include <iostream>       
 using std::cout; 
 using std::endl;
 #include <iomanip>       // formatting runtimes, std::fixed, setprecision, etc 
 using std::setprecision; 
-#include <typeinfo>      // validating inputs with typeid 
-#include <type_traits>   // c++11 static assert 
+//#include <typeinfo>      // validating inputs with typeid 
+//#include <type_traits>   // c++11 static assert 
 #include <chrono>        // timing a block of code's execution   
 #include <cassert>       // checking correctness with assert() 
 #include <string>        // for printing filename, other command-line args  
 #include <string_view>   // c++17 read only string, better for performance
 #include <fstream>       // necessary for write to csv 
-
 #include "terminal.h"    // writeToTerminal( <params> )  
 #include "printdata.h"   // show one-dimensional container's data of any type with printdata( <container> )
 #include "type.h"        // templated typename function definition 
 #include "writecsv.h"    // writeToCSV( <params> )  
 
-#define DEFAULT_INPUT "./stack_int_array" // can use argv[0] for this too 
+#define DEFAULT_INPUT "./Cstackarray" // can use argv[0] for this too 
+#define ACCESSMETHOD "a[i] = i*3" 
 
 int main(int argc, char* argv[])
 {
@@ -25,23 +25,37 @@ int main(int argc, char* argv[])
 		using value_t = int; // looking to compare int, float, double, etc... for various container implementations     
 		using index_t = int;  
 		// problem size 
-		constexpr index_t size = 25;  // NOTE: do not exceed val from ulimit -a | grep stack   		
+		constexpr index_t size = 250000;  // NOTE: do not exceed val from ulimit -a | grep stack   		
 		std::string filename = DEFAULT_INPUT;  
-		std::string_view dt = typeid(value_t).name(); // store datatype that was used for results  
-	    value_t x{}; // value to fill arr 
-		// validating uniform types were configured  
+		std::string_view vt = typeid(value_t).name(); // store the datatype used to make array for results  
+	    std::string_view it = typeid(index_t).name(); // store the index type used to index the array while < size
+		//value_t x{}; // value to fill arr 
+		
+		// validating uniform types were configured and setting fill type appropriately  
+	    /*	
 		auto t =  typeid(value_t).name(); 
-		if ( t == typeid(int).name() ) 
+		
+		if ( t == typeid(int).name() || t == typeid(std::size_t).name()  ) 
 		{ 
-		    static_assert(std::is_same<decltype(x), int>::value, "x must be int"); 
+		    //static_assert(std::is_same<decltype(x), int>::value, "x must be int"); 
 			x = 3; 
-			cout << "Integer Array is being initialized on the stack, indexing with 4-byte int... " << endl; 
-	    }
+			cout << "\nint or size_t detected for type" << endl; 
+        }
+		else if (t == typeid(float).name())
+		{
+			x = 3.0f; 
+			cout << "\nfloat has been detected for type" << endl; 
+        }
+		else if (t == typeid(double).name())
+		{
+			x = 3.0;  
+			cout << "\ndouble has been detected for type" << endl; 
+        }
         else 
 		{ 
 			cout << "\nType conflict in Array Initialization... Ensure size/index i of array are same type" << endl; 
 			return 1; 
-        } 
+        } */ 
 
 		// declare an array on the stack  
 		value_t a[size];  
@@ -50,7 +64,7 @@ int main(int argc, char* argv[])
 		auto s1 = std::chrono::high_resolution_clock::now(); 
         for(index_t i = 0; i < size; ++i) 
         { 
-            a[i] =  i*x;
+            a[i] =  i*3;
         } 
         auto s2 = std::chrono::high_resolution_clock::now(); 
 	    std::chrono::duration<double, std::milli> init = s2-s1; 
@@ -70,19 +84,17 @@ int main(int argc, char* argv[])
 		} 
 
         // prepare profiling results   
-		// double t = init.count(); 
-		// cout << std::fixed << setprecision(7) << t; 
 		std::size_t bytes =  sizeof(a); 
         std::size_t elements = bytes / sizeof(value_t); 
         assert(elements == size); 
         assert(bytes == size*sizeof(value_t)); 
         std::string_view declaration = type_name<decltype(a)>(); 
-    
+		std::string_view am = ACCESSMETHOD; 
         // write profiling results 
-        writeToTerminal(declaration, dt, bytes, elements, init);   
+        writeToTerminal(declaration, vt, it, bytes, elements, init, am);   
         if (argc == 2)  {
         std::string file_path(argv[1]);
-        writeToCSV(file_path, filename, dt, size, bytes, init); 
+        writeToCSV(file_path, filename, vt, it, size, bytes, init, am); 
         }   
 		
         // show array elements if needed     
