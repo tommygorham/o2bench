@@ -1,14 +1,26 @@
 # o2bench
 Benchmarking C++ raw storage vs STL containers before and after compiler optimizations with -O2. 
-In the future I plan to hardcode some intrinsics. 
+In the future I plan to add files that are hardcoded with intrinsics. 
 
-## Directions 
+# Directions 
+
+### Configure
+
 ```
 vim CMakeLists.txt 
 ```
-[Set Optimization level](https://github.com/tommygorham/o2bench/blob/main/CMakeLists.txt#:~:text=%23set(CMAKE_CXX_FLAGS,17%20%2DO2%20%22))
+[Set Optimization level on line 6/7](https://github.com/tommygorham/o2bench/blob/main/CMakeLists.txt#:~:text=%23set(CMAKE_CXX_FLAGS,17%20%2DO2%20%22))
 
+[Choose Test on line 9/14](https://github.com/tommygorham/o2bench/blob/main/CMakeLists.txt)
 
+### Run 
+
+```
+mkdir build && cd build 
+cmake .. -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc 
+make 
+./<exe>      or    ./<exe> <results.csv> 
+```
 
 ## Files and Structure
 
