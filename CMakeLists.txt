@@ -3,7 +3,7 @@ project(o2bench)
 
 include_directories(include) 
 
-#set(CMAKE_CXX_FLAGS " -Wall -std=c++2a") 
+#set(CMAKE_CXX_FLAGS " -Wall -std=c++17 ") 
 set(CMAKE_CXX_FLAGS " -Wall -std=c++17 -O2 ") 
 
 ### test 1:  init array on stack, traditional for loop  

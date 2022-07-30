@@ -1,0 +1,49 @@
+Filename,Valuetype,Index Type,Problem Size,Bytes,Allocation-time,Access Method
+./Cstackarray,i,m,250000,1000000,0.4452510,a[i] = i
+./Cstackarray,i,m,250000,1000000,0.4109330,a[i] = i
+./Cstackarray,i,m,250000,1000000,0.4062500,a[i] = i
+./Cstackarray,i,m,250000,1000000,0.3772370,a[i] = i
+./Cstackarray,i,m,250000,1000000,0.3782950,a[i] = i
+./Cstackarray,i,m,250000,1000000,0.3957420,a[i] = i
+./Cstackarray,i,m,250000,1000000,0.4526490,a[i] = i
+./Cstackarray,i,m,250000,1000000,0.4263800,a[i] = i
+./cppstdarray,i,m,250000,1000000,0.3949250,a[i] = i
+./cppstdarray,i,m,250000,1000000,0.4018370,a[i] = i
+./cppstdarray,i,m,250000,1000000,0.3908350,a[i] = i
+./cppstdarray,i,m,250000,1000000,0.3882160,a[i] = i
+./cppstdarray,i,m,250000,1000000,0.3798340,a[i] = i
+./cppstdarray,i,m,250000,1000000,0.4052280,a[i] = i
+./cppstdarray,i,m,250000,1000000,0.3914570,a[i] = i
+./cppstdarray,i,m,250000,1000000,0.3914360,a[i] = i
+./cppstdvectr,i,m,250000,1000024,0.6920940,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250000,1000024,0.7131370,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250000,1000024,0.6894300,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250000,1000024,0.7084850,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250000,1000024,0.7093350,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250000,1000024,0.6843920,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250000,1000024,0.7068360,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250000,1000024,0.7093600,using reserve(size) emplace_back i
+./Cstackarray,i,m,250,1000,0.0002050,a[i] = i
+./Cstackarray,i,m,250,1000,0.0001870,a[i] = i
+./Cstackarray,i,m,250,1000,0.0002150,a[i] = i
+./Cstackarray,i,m,250,1000,0.0002190,a[i] = i
+./Cstackarray,i,m,250,1000,0.0002310,a[i] = i
+./Cstackarray,i,m,250,1000,0.0002360,a[i] = i
+./Cstackarray,i,m,250,1000,0.0001840,a[i] = i
+./Cstackarray,i,m,250,1000,0.0001890,a[i] = i
+./cppstdarray,i,m,250,1000,0.0001840,a[i] = i
+./cppstdarray,i,m,250,1000,0.0001720,a[i] = i
+./cppstdarray,i,m,250,1000,0.0001800,a[i] = i
+./cppstdarray,i,m,250,1000,0.0001910,a[i] = i
+./cppstdarray,i,m,250,1000,0.0002190,a[i] = i
+./cppstdarray,i,m,250,1000,0.0002270,a[i] = i
+./cppstdarray,i,m,250,1000,0.0002020,a[i] = i
+./cppstdarray,i,m,250,1000,0.0001980,a[i] = i
+./cppstdvectr,i,m,250,1024,0.0005210,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250,1024,0.0005380,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250,1024,0.0004900,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250,1024,0.0005240,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250,1024,0.0005500,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250,1024,0.0005140,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250,1024,0.0005290,using reserve(size) emplace_back i
+./cppstdvectr,i,m,250,1024,0.0005210,using reserve(size) emplace_back i
