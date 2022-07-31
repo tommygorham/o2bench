@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 	using value_t = int; // looking to compare int, float, double, etc... for various container implementations     
 	using index_t = std::size_t;  
 	// problem size 
-	constexpr index_t size = 250;  // NOTE: do not exceed val from ulimit -a | grep stack   		
+	constexpr index_t size = 250000;  // NOTE: do not exceed val from ulimit -a | grep stack   		
 	std::string filename = DEFAULT_INPUT;  
 	std::string_view vt = typeid(value_t).name(); // store the datatype used to make array for results  
 	std::string_view it = typeid(index_t).name(); // store the index type used to index the array while < size
