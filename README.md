@@ -1,5 +1,5 @@
 # o2bench
-Benchmarking raw one-dimensional storage vs 1D STL containers in C++, before and after compiler optimizations with -O2. 
+Raw one-dimensional storage vs 1D STL containers in C++, before and after compiler optimizations with -O2. 
 
 # 1MB Array Access Results in milliseconds
 
