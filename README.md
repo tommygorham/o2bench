@@ -1,7 +1,9 @@
 # o2bench
 Benchmarking raw one-dimensional storage vs 1D STL containers in C++, before and after compiler optimizations with -O2. 
 
-# 1MB Array Access Results 
+# 1MB Array Access Results in milliseconds
+
+<img src = "https://github.com/tommygorham/o2bench/blob/main/arrays/results_csv/quickview.png" />
 
 # Directions 
 
