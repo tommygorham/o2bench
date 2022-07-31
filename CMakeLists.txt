@@ -7,7 +7,7 @@ include_directories(include) # header files
 #set(CMAKE_CXX_FLAGS " -Wall -std=c++17 ")
 
 # compile with gcc level2 optimization  
-set(CMAKE_CXX_FLAGS " -Wall -std=c++17 -O2 ") 
+set(CMAKE_CXX_FLAGS " -Wall -std=c++17 -O2 ") # can also append -march=native 
 
 ### 1D Container test 1:  init array with traditional for loop using a[i] = i   
 add_executable(run_stack_arr.exe arrays/i/stackarr.cpp src/terminal.cpp src/writecsv.cpp)
