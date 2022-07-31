@@ -1,6 +1,7 @@
 # o2bench
-Benchmarking C++ raw storage vs STL containers before and after compiler optimizations with -O2. 
-In the future I plan to add files that are hardcoded with intrinsics. 
+Benchmarking raw one-dimensional storage vs 1D STL containers in C++, before and after compiler optimizations with -O2. 
+
+# 1MB Array Access Results 
 
 # Directions 
 
