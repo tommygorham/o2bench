@@ -18,9 +18,7 @@ The compiler should be able to optimize std::array as well or better than raw C-
 ```
 vim CMakeLists.txt 
 ```
-[Set Optimization level on line 6/7](https://github.com/tommygorham/o2bench/blob/main/CMakeLists.txt#:~:text=%23set(CMAKE_CXX_FLAGS,17%20%2DO2%20%22))
-
-[Choose Test on line 9/14](https://github.com/tommygorham/o2bench/blob/main/CMakeLists.txt)
+[Set Optimization level in the CMakeLists.txt file and select the test to perform here as well. 
 
 ### Run 
 
