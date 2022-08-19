@@ -1,6 +1,15 @@
 # o2bench
-Benchmarking C++ raw storage vs STL containers before and after compiler optimizations with -O2. 
-In the future I plan to add files that are hardcoded with intrinsics. 
+Raw one-dimensional C-Array storage vs 1D STL containers in C++ (std::array and std::vector), before and after compiler optimizations with g++ -O2. 
+
+# The Goal of this Benchmark 
+By examining the compiler's ability to optimize memory access, we will determine if a one-dimensional std::array or a raw C-Array is better for computational performance when defining a data structure. std::vector was added to see the performance difference of heap allocations before and after compiler optimizations are added. 
+
+# Hypothesis 
+The compiler should be able to optimize std::array as well or better than raw C-arrays. If this is the case, then std::array may be the best choice for defining something like a matrix class when the size is constexpr (or known at compile time). This is because 1D matrix storage is faster than 2D in most cases, and std::array is safer than using a raw array, due to things like bounds checking.  
+
+# 1MB Array Access Results in milliseconds
+
+<img src = "https://github.com/tommygorham/o2bench/blob/main/arrays/results_csv/quickview.png" />
 
 # Directions 
 
@@ -9,9 +18,7 @@ In the future I plan to add files that are hardcoded with intrinsics.
 ```
 vim CMakeLists.txt 
 ```
-[Set Optimization level on line 6/7](https://github.com/tommygorham/o2bench/blob/main/CMakeLists.txt#:~:text=%23set(CMAKE_CXX_FLAGS,17%20%2DO2%20%22))
-
-[Choose Test on line 9/14](https://github.com/tommygorham/o2bench/blob/main/CMakeLists.txt)
+[Set Optimization level in the CMakeLists.txt file and select the test to perform here as well. 
 
 ### Run 
 
