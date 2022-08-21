@@ -1,5 +1,7 @@
 # o2bench
-Raw one-dimensional C-Array storage vs 1D STL containers in C++ (std::array and std::vector), before and after compiler optimizations with g++ -O2. 
+Raw one-dimensional C-Array storage vs 1D STL containers in C++ (std::array and std::vector), before and after compiler optimizations with g++ -O2.
+Additionally, cache alignment is implemented [in this file](https://github.com/tommygorham/o2bench/blob/main/arrays/i/stdarr_aligned.cpp), for 64 bit cache lines. 
+This ensures the starting address is at the beginning of a cache line, and is done via `alignas(64)` 
 
 # The Goal of this Benchmark 
 By examining the compiler's ability to optimize memory access, we will determine if a one-dimensional std::array or a raw C-Array is better for computational performance when defining a data structure. std::vector was added to see the performance difference of heap allocations before and after compiler optimizations are added. 
@@ -8,6 +10,8 @@ By examining the compiler's ability to optimize memory access, we will determine
 The compiler should be able to optimize std::array as well or better than raw C-arrays. If this is the case, then std::array may be the best choice for defining something like a matrix class when the size is constexpr (or known at compile time). This is because 1D matrix storage is faster than 2D in most cases, and std::array is safer than using a raw array, due to things like bounds checking.  
 
 # 1MB Array Access Results in milliseconds
+
+More results can be viewed [here]
 
 <img src = "https://github.com/tommygorham/o2bench/blob/main/arrays/results_csv/quickview.png" />
 
