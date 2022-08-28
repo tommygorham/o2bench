@@ -11,9 +11,9 @@ The compiler should be able to optimize std::array as well or better than raw C-
 
 # 1MB Array Access Results in milliseconds
 
-More results can be viewed [here]
+More results can be viewed [here](https://github.com/tommygorham/o2bench/tree/main/arrays/results_csv)
 
-<img src = "https://github.com/tommygorham/o2bench/blob/main/arrays/results_csv/quickview.png" />
+<img src = "https://github.com/tommygorham/o2bench/blob/main/arrays/results_csv/results_quickview.png" />
 
 # Directions 
 
