@@ -5,7 +5,7 @@
 
 // for writing type to output 
 template <typename T> constexpr auto type_name() noexcept { 
- std::string_view name, prefix, suffix;
+std::string_view name, prefix, suffix;
 #ifdef __clang__ 
   name = __PRETTY_FUNCTION__;
   prefix = "auto type_name() [T = ";

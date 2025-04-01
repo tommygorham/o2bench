@@ -24,7 +24,7 @@ using std::setprecision;
 
 int main(int argc, char* argv[])
 {
-        // set type for container here   
+    // set type for container here   
 	using value_t = int64_t; 	
 	using index_t = int64_t; 
 	constexpr index_t size = 125000;  // NOTE: do not exceed val from ulimit -a | grep stack   		
@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
      
 	// initialize and time 
 	auto s1 = std::chrono::high_resolution_clock::now(); 
-    for(index_t i = 0; i < size; ++i) { 
+    for (index_t i = 0; i < size; ++i) { 
         a1[i] =  i;
     } 
     auto s2 = std::chrono::high_resolution_clock::now(); 
@@ -47,18 +47,18 @@ int main(int argc, char* argv[])
     // correctness check   
 	value_t last_element = a1[size-1]; // last element in the array 
 	value_t last_index = size-1;       // the last element's index  
-	if(last_element == last_index)     // since initialized with i  
+	if (last_element == last_index)     // since initialized with i  
 	{ 
-	     cout << "\na1[i] access  performed correctly." << endl; 
+	    cout << "\na1[i] access  performed correctly." << endl; 
 	}
 	else 
 	{ 
-	     cout << "\nError in Initialization with a1[i]" << endl; 
-	     return 1; 
+	    cout << "\nError in Initialization with a1[i]" << endl; 
+	    return 1; 
 	} 
     
 	intptr_t arr_ptr = (intptr_t)&a1[0]; // cache alignment check 
-	if( arr_ptr % 64 == 0){ 
+	if ( arr_ptr % 64 == 0){ 
 		cout << "\nBeginning address is properly aligned to cache\n"; 
 	} 
 
@@ -69,11 +69,13 @@ int main(int argc, char* argv[])
 	assert(bytes == size*sizeof(value_t)); 
 	std::string_view declaration = type_name<decltype(a1)>(); 
 	std::string_view am = ACCESSMETHOD; 
-	// write profiling results 
+	
+    // write profiling results 
 	writeToTerminal(declaration, vt, it, bytes, elements, init, am);   
-	if (argc == 2)  {
-	std::string file_path(argv[1]);
-	writeToCSV(file_path, filename, vt, it, size, bytes, init, am); 
+	if (argc == 2)  
+    {
+	    std::string file_path(argv[1]);
+	    writeToCSV(file_path, filename, vt, it, size, bytes, init, am); 
 	}   
 	
 	// show array elements if needed     
@@ -81,5 +83,6 @@ int main(int argc, char* argv[])
 	{ 
 		printData(a1); 
 	}
-	return 0; 
+	
+    return 0; 
 }
