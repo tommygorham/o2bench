@@ -1,11 +1,35 @@
 # o2bench
-Raw one-dimensional C-Array storage vs C++ STL containers (std::array and std::vector), before and after compiler
-optimizations (-O2).
-Additionally, cache alignment is implemented [in this file](https://github.com/tommygorham/o2bench/blob/main/arrays/i/stdarr_aligned.cpp), for 64 bit cache lines. 
-This ensures the starting address is at the beginning of a cache line, and is done via `alignas(64)` 
+Raw C-Style array storage vs C++ STL containers (std::array and std::vector), before and after compiler
+optimizations `-O2` and cache alignment `alignas(64)` 
 
-# The Goal of this Benchmark 
-To compare the compiler's ability to optimize memory access based on the data structure. 
+# Purpose 
+To compare the compiler's ability to optimize memory access operations based on the data structure. 
+
+# Results
+![Visualization](img/Memory_Access_Performance.png)
+
+## Key Observations
+**std::vector** has the highest allocation time both before and after optimization,
+likely due to additional overhead from dynamic allocation
+
+**std::array (aligned)** performs best in both scenarios, demonstrating the benefits
+of memory alignment
+
+**Compiler optimizations (-O2)** provide substantial performance improvements for
+all data structures
+
+The **relative improvement** from optimization is similar across all data structures
+(81.4%, 79.7%, 78.9%, 71.3%)
+
+## Optimization Impact
+Average time reduction: 77.8%
+
+All data structures show significant performance gains with compiler
+optimizations, but the fundamental performance characteristics of each container
+type are preserved.
+
+Even with optimizations, std::vector remains significantly slower than
+array-based alternatives for this particular initialization pattern.
 
 # Compile
 
@@ -20,20 +44,4 @@ make
 
 ```
 ../run_tests.sh
-```
-
-## More Info 
-
-The subfolder [arrays/i_x](https://github.com/tommygorham/o2bench/tree/main/arrays/i_x) is deprecated
-
-In the past, it was used to measure how O2 behaves with a[i] = i*x read/write. 
-In this folder, x is set to the appropriate value, depending on the type passed to value_t. 
-E.g., 
-
-```CPP 
-using value_t = float; 
-x = 3.0f;
-
-using value_t = int; 
-x = 3; 
 ```
