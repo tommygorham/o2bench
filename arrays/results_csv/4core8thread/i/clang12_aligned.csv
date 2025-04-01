@@ -1,6 +1,0 @@
-Filename,Valuetype,Index Type,Problem Size,Bytes,Allocation-time,Access Method
-./cppstdarrayALIGNED,l,l,125000,1000000,0.8712180,a[i] = i
-./cppstdarrayALIGNED,l,l,125000,1000000,0.8799850,a[i] = i
-./cppstdarrayALIGNED,l,l,125000,1000000,0.8899440,a[i] = i
-./cppstdarrayALIGNED,l,l,125000,1000000,0.8457390,a[i] = i
-./cppstdarrayALIGNED,l,l,125000,1000000,0.8824690,a[i] = i

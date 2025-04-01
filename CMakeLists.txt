@@ -1,23 +1,37 @@
-cmake_minimum_required(VERSION 3.16) # should work with other versions too 
+cmake_minimum_required(VERSION 3.16) 
 project(o2bench)
 
-include_directories(include) # header files  
+# -I include location of header files
+include_directories(include) 
 
-# compile with no optimization flags 
-#set(CMAKE_CXX_FLAGS " -Wall -std=c++17 ")
+# Apply standard settings, require C++17 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# compile with gcc level2 optimization  
-set(CMAKE_CXX_FLAGS " -Wall -std=c++17 -O2 ") # can also append -march=native 
+# Define common source files
+set(COMMON_SOURCES src/terminal.cpp src/writecsv.cpp)
 
-### 1D Container test 1:  init array with traditional for loop using a[i] = i   
-add_executable(run_stack_arr.exe arrays/i/stackarr.cpp src/terminal.cpp src/writecsv.cpp)
-add_executable(run_stdarr.exe arrays/i/stdarr.cpp src/terminal.cpp src/writecsv.cpp) 
-add_executable(run_std_vec.exe arrays/i/stdvec.cpp src/terminal.cpp src/writecsv.cpp)
-add_executable(run_stdarr_aligned.exe arrays/i/stdarr_aligned.cpp src/terminal.cpp src/writecsv.cpp)
+# Function to add executables with specific optimization level
+function(add_optimized_executables OPT_FLAG SUFFIX)
+    # Create a scope for these flags
+    add_compile_options(${OPT_FLAG})
+    
+    # Add executables with appropriate suffixes
+    add_executable(stack_arr_i_${SUFFIX}.exe arrays/i/stackarr.cpp ${COMMON_SOURCES})
+    add_executable(stdarr_i_${SUFFIX}.exe arrays/i/stdarr.cpp ${COMMON_SOURCES})
+    add_executable(std_vec_i_${SUFFIX}.exe arrays/i/stdvec.cpp ${COMMON_SOURCES})
+    add_executable(stdarr_aligned_i_${SUFFIX}.exe arrays/i/stdarr_aligned.cpp ${COMMON_SOURCES})
+    
+    # Reset compile options for the next set
+    remove_definitions(${OPT_FLAG})
+endfunction()
 
+# First compile debug (-O0) versions
+add_optimized_executables("-O0" "debug")
 
-### 1D container test 2:  init array with traditional for loop using a[i] = i * x  
-#add_executable(run_stack_arr.exe arrays/i_x/stackarr.cpp src/terminal.cpp src/writecsv.cpp)
-#add_executable(run_std_arr.exe arrays/i_x/stdarr.cpp src/terminal.cpp src/writecsv.cpp) 
-#add_executable(run_std_vec.exe arrays/i_x/stdvec.cpp src/terminal.cpp src/writecsv.cpp)
+# Then compile optimized (-O2) versions
+add_optimized_executables("-O2" "opt")
 
+# Add Wall for all targets (common to both sets)
+add_compile_options(-Wall)
