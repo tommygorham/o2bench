@@ -6,7 +6,7 @@ optimizations `-O2` and cache alignment `alignas(64)`
 To compare the compiler's ability to optimize memory access operations based on the data structure. 
 
 # Results
-![Visualization](img/Memory_Access_Performance.png)
+![Visualization](img/O2_Memory_Access_Performance.png)
 
 ## Key Observations
 **std::vector** has the highest allocation time both before and after optimization,
@@ -19,10 +19,10 @@ of memory alignment
 all data structures
 
 The **relative improvement** from optimization is similar across all data structures
-(81.4%, 79.7%, 78.9%, 71.3%)
+(81.4%, 79.7%, 78.9%, 77.9%)
 
 ## Optimization Impact
-Average time reduction: 77.8%
+Average time reduction: 79.5%
 
 All data structures show significant performance gains with compiler
 optimizations, but the fundamental performance characteristics of each container
