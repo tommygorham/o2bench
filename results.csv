@@ -2,8 +2,8 @@ Filename,Valuetype,Index Type,Problem Size,Bytes,Allocation-time,Access Method
 ./Cstackarray,i,m,250000,1000000,1.8990830,a[i] = i
 ./cppstdarray,i,m,250000,1000000,1.5290420,a[i] = i
 ./cppstdvectr,i,m,250000,1000024,4.9144580,using reserve(size) emplace_back i
-./cppstdarrayALIGNED,l,l,125000,1000000,0.7680000,a[i] = i
+./cppstdarrayALIGNED,l,l,125000,1000000,1.3695000,a[i] = i
 ./Cstackarray,i,m,250000,1000000,0.3524580,a[i] = i
 ./cppstdarray,i,m,250000,1000000,0.3101670,a[i] = i
 ./cppstdvectr,i,m,250000,1000024,1.0354580,using reserve(size) emplace_back i
-./cppstdarrayALIGNED,l,l,125000,1000000,0.2202080,a[i] = i
+./cppstdarrayALIGNED,l,l,125000,1000000,0.3032010,a[i] = i
